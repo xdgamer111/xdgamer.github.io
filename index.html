@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>xd_gamer Links</title>
+  <title>xd_gamer | Digital Card</title>
 
   <style>
     * { box-sizing: border-box; font-family: Arial, sans-serif; }
@@ -11,91 +11,263 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at top, #073b1f, #050505 55%);
+      background: #020403;
       color: white;
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(0,255,136,.25), transparent 35%),
+        radial-gradient(circle at bottom, rgba(0,120,60,.2), transparent 35%),
+        #020403;
+      z-index: -2;
+    }
+
+    .particles span {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: #00ff88;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #00ff88;
+      animation: float 8s infinite linear;
+      opacity: .7;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      from { transform: translateY(110vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    .wrapper {
+      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 25px;
+      align-items: center;
+      padding: 28px;
     }
 
     .card {
       width: 100%;
-      max-width: 440px;
-      background: rgba(0, 0, 0, 0.78);
-      border: 1px solid #00ff88;
-      border-radius: 24px;
-      padding: 28px;
+      max-width: 480px;
+      background: rgba(0, 0, 0, .72);
+      border: 1px solid rgba(0, 255, 136, .75);
+      border-radius: 28px;
+      padding: 30px;
       text-align: center;
-      box-shadow: 0 0 35px rgba(0, 255, 136, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 45px rgba(0, 255, 136, .25);
+      animation: pop .7s ease;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: translateY(25px) scale(.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .avatar {
-      width: 105px;
-      height: 105px;
+      width: 115px;
+      height: 115px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #00ff88;
-      box-shadow: 0 0 20px rgba(0, 255, 136, 0.45);
-      margin-bottom: 14px;
+      box-shadow: 0 0 25px rgba(0,255,136,.7);
+      margin-bottom: 15px;
     }
 
     h1 {
-      margin: 8px 0 5px;
-      font-size: 34px;
+      margin: 8px 0 4px;
+      font-size: 38px;
       color: #00ff88;
+      text-shadow: 0 0 12px rgba(0,255,136,.7);
     }
 
-    p {
-      margin: 0 0 22px;
+    .tagline {
       color: #cfcfcf;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0,255,136,.12);
+      border: 1px solid rgba(0,255,136,.6);
+      color: #00ff88;
+      font-size: 14px;
     }
 
     .link {
       display: block;
       text-decoration: none;
       color: white;
-      background: #111;
-      border: 1px solid #00ff88;
-      border-radius: 14px;
-      padding: 15px;
+      background: rgba(20,20,20,.9);
+      border: 1px solid rgba(0,255,136,.65);
+      border-radius: 16px;
+      padding: 16px;
       margin: 12px 0;
       font-size: 18px;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .link:hover {
-      transform: scale(1.04);
+      transform: translateY(-3px) scale(1.03);
+      background: #00ff88;
+      color: black;
+      font-weight: bold;
+      box-shadow: 0 0 22px rgba(0,255,136,.65);
+    }
+
+    .section {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,255,136,.25);
+    }
+
+    .section h2 {
+      color: #00ff88;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .about {
+      color: #d7d7d7;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(0,255,136,.25);
+      border-radius: 14px;
+      padding: 12px 6px;
+    }
+
+    .stat strong {
+      display: block;
+      color: #00ff88;
+      font-size: 20px;
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .copy-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #00ff88;
+      background: transparent;
+      color: #00ff88;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .copy-btn:hover {
       background: #00ff88;
       color: black;
       font-weight: bold;
     }
 
     .footer {
-      margin-top: 20px;
+      margin-top: 22px;
       font-size: 13px;
       color: #888;
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 24px; }
+      h1 { font-size: 33px; }
+      .stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
+  <div class="bg"></div>
 
-    <!-- Upload your pfp to GitHub as pfp.png -->
-    <img class="avatar" src="pfp.png" alt="xd_gamer profile picture">
-
-    <h1>xd_gamer</h1>
-    <p>Roblox Developer & Graphic Designer</p>
-
-    <a class="link" href="https://sites.google.com/view/xdgamergfx/home" target="_blank">🎨 Portfolio</a>
-    <a class="link" href="https://www.fiverr.com/s/2K3L1aV" target="_blank">🛒 Fiverr</a>
-    <a class="link" href="https://www.youtube.com/@xd_gamer" target="_blank">▶️ YouTube</a>
-    <a class="link" href="https://discord.com/users/687760535067820154" target="_blank">💬 Discord</a>
-    <a class="link" href="https://www.roblox.com/users/425016413/profile" target="_blank">🎮 Roblox</a>
-    <a class="link" href="mailto:xdgamerGFX@gmail.com">📧 Email Me</a>
-
-    <div class="footer">Tap card powered by NFC</div>
+  <div class="particles">
+    <span style="left:5%; animation-delay:0s;"></span>
+    <span style="left:18%; animation-delay:2s;"></span>
+    <span style="left:35%; animation-delay:4s;"></span>
+    <span style="left:52%; animation-delay:1s;"></span>
+    <span style="left:70%; animation-delay:3s;"></span>
+    <span style="left:88%; animation-delay:5s;"></span>
   </div>
+
+  <div class="wrapper">
+    <div class="card">
+
+      <img class="avatar" src="pfp.png" alt="xd_gamer profile picture">
+
+      <h1>xd_gamer</h1>
+      <div class="tagline">Roblox Developer & Graphic Designer</div>
+      <div class="badge">✨ Available for GFX Commissions</div>
+
+      <a class="link" href="https://sites.google.com/view/xdgamergfx/home" target="_blank">🎨 Portfolio</a>
+      <a class="link" href="https://www.fiverr.com/s/2K3L1aV" target="_blank">🛒 Fiverr</a>
+      <a class="link" href="https://www.youtube.com/@xd_gamer" target="_blank">▶️ YouTube</a>
+      <a class="link" href="https://discord.com/users/687760535067820154" target="_blank">💬 Discord</a>
+      <a class="link" href="https://www.roblox.com/users/425016413/profile" target="_blank">🎮 Roblox</a>
+      <a class="link" href="mailto:xdgamerGFX@gmail.com">📧 Email Me</a>
+
+      <div class="section">
+        <h2>About Me</h2>
+        <p class="about">
+          I create Roblox thumbnails, game icons, banners, profile pictures,
+          and custom GFX designs for creators and developers.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Quick Stats</h2>
+        <div class="stats">
+          <div class="stat">
+            <strong>GFX</strong>
+            <span>Designs</span>
+          </div>
+          <div class="stat">
+            <strong>Roblox</strong>
+            <span>Creator</span>
+          </div>
+          <div class="stat">
+            <strong>Fast</strong>
+            <span>Contact</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Contact</h2>
+        <button class="copy-btn" onclick="copyEmail()">📋 Copy Email</button>
+      </div>
+
+      <div class="footer">Thanks for tapping my NFC card 💚</div>
+    </div>
+  </div>
+
+  <script>
+    function copyEmail() {
+      navigator.clipboard.writeText("xdgamerGFX@gmail.com");
+      alert("Email copied!");
+    }
+  </script>
 </body>
 </html>
